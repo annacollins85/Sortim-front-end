@@ -1,0 +1,78 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  background-color: grey;
+  min-height: 100vh;
+  width: 70vw;
+  margin: auto;
+}
+
+.NavBar {
+  display: flex;
+  background-color: white;
+  border-style: groove;
+  height: 50px;
+}
+
+.Login {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.Circle {
+  background-color: yellow;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  margin-bottom: 20px;
+}
+
+.EventList {
+  display: flex;
+  flex-direction: column;
+}
+
+.Event {
+  border-style: groove;
+  background-color: red;
+  margin: 20px;
+}
+
+.UserCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.Img {
+  height: 400px;
+  width: 400px;
+  background-color: skyblue;
+}
+
+.UserInfo {
+  margin: 30px;
+}
+
+.Connect {
+  display: flex;
+  justify-content: space-around;
+}
+
+.No, .Yes {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.No {
+  background-color: red;
+}
+
+.Yes {
+  background-color: Green;
+}
