@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from 'redux'
 
 const authDefaultState = {
   authObj: null
@@ -10,6 +10,11 @@ const authReducer = (state = authDefaultState, action) => {
       return {
         ...state,
         authObj: action.authObj
+      }
+    case 'LOG_OUT':
+      return {
+        ...state,
+        authObj: null
       }
     default:
       return state;

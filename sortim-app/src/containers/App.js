@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import { connect } from 'react-redux';
+
 import NavBar from './NavBar';
 import Login from './Login';
 import EventList from './EventList';
@@ -8,28 +10,27 @@ import UserCard from './UserCard';
 
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
-// const PrivateRoute = ({component: Component, ...rest}) => (
-//   <Route {...rest} render={props => (this.state.authObj ? (<Component {...props}/> : (
-//     <Redirect to={{pathname: '/login', state: { from: props.location}}}/>
-//   )
-// )}/>
-// )
+const PrivateRoute = (props) => {
+  const { component: Component, ...rest } = props;
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route {...rest} render={props => (
-    this.props.authObj ? (
-      <Component {...props}/>
-    ) : (
-      <Redirect to={{
-        pathname: '/login',
-        state: { from: props.location }
-      }}/>
-    )
-  )}/>
-)
+  return (
+    <Route {...rest} render={ (props) => {
+      return ( rest.authObj !== null
+        ? (
+          <Component {...rest} />
+        )
+        : (
+          <Redirect to={{
+            pathname: '/',
+            state: { from: props.location }
+          }}/>
+        )
+      );
+    }} />
+  );
+}
 
 class App extends Component {
-
 
   render() {
     return (
@@ -37,12 +38,16 @@ class App extends Component {
       <div className="App">
         <NavBar/>
         <Route exact path="/" component={Login}/>
-        <PrivateRoute path="/events" component={EventList}/>
-        <PrivateRoute path="/other-users" component={UserCard}/>
+        <PrivateRoute authObj={this.props.authObj} path="/events" component={EventList}/>
+        <PrivateRoute authObj={this.props.authObj} path="/other-users" component={UserCard}/>
       </div>
       </Router>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  authObj: state.auth.authObj
+})
+
+export default connect(mapStateToProps)(App);
