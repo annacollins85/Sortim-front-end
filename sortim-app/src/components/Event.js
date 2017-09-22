@@ -4,7 +4,8 @@ class Event extends Component {
   render() {
     return (
       <div className="Event">
-        <h2>Event Name</h2>
+        <h2>{this.props.name}</h2>
+        <h3>{this.props.start}</h3>
       </div>
     );
   }

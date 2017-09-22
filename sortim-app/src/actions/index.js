@@ -6,3 +6,8 @@ export const addAuth = (authObj) => ({
 export const logOut = () => ({
   type: 'LOG_OUT'
 })
+
+export const addEvents = (events) => ({
+  type: 'ADD_EVENTS',
+  events
+})

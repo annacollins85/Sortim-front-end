@@ -21,8 +21,30 @@ const authReducer = (state = authDefaultState, action) => {
   }
 }
 
+const entitiesDefaultState = {
+  events: []
+}
+
+const entitiesReducer = (state = entitiesDefaultState, action) => {
+  switch (action.type) {
+    case 'ADD_EVENTS':
+      return {
+        ...state,
+        events: action.events
+      }
+    case 'LOG_OUT':
+      return {
+        ...state,
+        events: null
+      }
+    default:
+      return state;
+  }
+}
+
 const reducer = combineReducers({
   auth: authReducer,
+  entities: entitiesReducer,
 })
 
 export default reducer;

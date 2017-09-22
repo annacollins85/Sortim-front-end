@@ -10,9 +10,27 @@ import UserCard from './UserCard';
 
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
+const LoginRoute = (props) => {
+  const { component: Component, ...rest } = props;
+  return (
+    <Route {...rest} render={ (props) => {
+      return ( rest.authObj === null
+        ? (
+          <Component {...rest} />
+        )
+        : (
+          <Redirect to={{
+            pathname: '/events',
+            state: { from: props.location }
+          }}/>
+        )
+      );
+    }} />
+  );
+}
+
 const PrivateRoute = (props) => {
   const { component: Component, ...rest } = props;
-
   return (
     <Route {...rest} render={ (props) => {
       return ( rest.authObj !== null
@@ -37,7 +55,7 @@ class App extends Component {
       <Router>
       <div className="App">
         <NavBar/>
-        <Route exact path="/" component={Login}/>
+        <LoginRoute exact authObj={this.props.authObj} path="/" component={Login}/>
         <PrivateRoute authObj={this.props.authObj} path="/events" component={EventList}/>
         <PrivateRoute authObj={this.props.authObj} path="/other-users" component={UserCard}/>
       </div>

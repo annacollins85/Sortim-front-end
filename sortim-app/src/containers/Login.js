@@ -8,7 +8,6 @@ import FacebookLogin from 'react-facebook-login';
 class Login extends Component {
 
   responseFacebook = (response) => {
-    console.log(this.props.authObj);
     console.log(response);
     this.props.onFbLogin(response);
   }
