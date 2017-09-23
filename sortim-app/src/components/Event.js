@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
 
+import { Link } from 'react-router-dom';
+
 class Event extends Component {
+
   render() {
     return (
-      <div className="Event">
-        <h2>{this.props.name}</h2>
-        <h3>{this.props.start}</h3>
-      </div>
+      <Link to={`/events/${this.props.event.id}`}>
+        <div className="Event">
+          <img className="EventImg" src={this.props.event.picture.data.url}/>
+          <div className="EventInfo">
+            <h2>{this.props.event.name}</h2>
+            <h3>{this.props.event.start_time}</h3>
+          </div>
+        </div>
+      </Link>
     );
   }
 }

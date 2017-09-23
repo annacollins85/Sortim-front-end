@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addAuth } from '../actions';
-import { Link } from 'react-router-dom';
 
 import FacebookLogin from 'react-facebook-login';
 
 class Login extends Component {
+
+  // constructor(props) {
+  //   super(props)
+  //   if (this.props.authObj !== null) this.props.history.push('events');
+  // }
 
   responseFacebook = (response) => {
     console.log(response);
@@ -14,8 +18,9 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="login">
-        <Link to="/events">Events</Link>
+      <div className="Login">
+      <h2 className="Welcome">Welcome to Sortim!</h2>
+      <h3 className="Welcome">Login to connect with people at Facebook events...</h3>
         <FacebookLogin
           appId="1551739381550538"
           autoLoad={false}

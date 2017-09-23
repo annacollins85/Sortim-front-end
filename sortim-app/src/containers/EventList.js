@@ -11,23 +11,26 @@ class EventList extends Component {
   }
 
   fetchEvents() {
-    fetch(`https://graph.facebook.com/v2.10/me/events?fields=start_time,end_time,id,name&access_token=${this.props.authObj.accessToken}`)
+    fetch(`https://graph.facebook.com/v2.10/me/events?fields=start_time,end_time,id,name,picture&access_token=${this.props.authObj.accessToken}`)
     .then(events => events.json())
     .then(events => events.data)
     .then(events => {
       events = events.filter(event => (
-        Date.parse(event.end_time) >= Date.now()
+        Date.parse(event.start_time) >= Date.now()
       ))
-      console.log('events', events);
+      events.sort((a,b) => {
+        return Date.parse(a.start_time) - Date.parse(b.start_time)
+      })
       this.props.addEvents(events)
     })
   }
 
   render() {
-    console.log('this.props.events', this.props.events);
-    const events = this.props.events.map((event, index) => {
-      return <Event key={index} name={event.name} start={event.start_time}/>
-    })
+    if(!this.props.events) return null;
+    const events = Object.keys(this.props.events)
+      .map(eventId => {
+        return <Event key={eventId} event={this.props.events[eventId]} />
+      });
     return (
       <div className="EventList">
         {events}

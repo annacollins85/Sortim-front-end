@@ -11,3 +11,8 @@ export const addEvents = (events) => ({
   type: 'ADD_EVENTS',
   events
 })
+
+export const addOtherUsers = (eventId) => ({
+  type: 'ADD_OTHER_USERS',
+  eventId
+})

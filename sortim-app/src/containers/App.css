@@ -1,42 +1,80 @@
+#root {
+  margin-top: 0.3em;
+}
+
 .App {
   display: flex;
   flex-direction: column;
-  background-color: grey;
+  align-items: center;
+  background-color: #fadf71  ;
   min-height: 100vh;
   width: 70vw;
   margin: auto;
 }
 
+.MainPage {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
 .NavBar {
   display: flex;
+  flex: 0.01;
+  justify-content: space-between;
   background-color: white;
-  border-style: groove;
+  align-items: center;
+  height: 60px;
+  width: 70vw;
+}
+
+.LogoDiv {
   height: 50px;
+}
+
+.Logo {
+  max-height: 100%;
+}
+
+.UserNav {
+  display: flex;
+  align-items: center;
+}
+
+.FlatButton:hover {
+  cursor: pointer;
 }
 
 .Login {
   display: flex;
   align-items: center;
   flex-direction: column;
-}
-
-.Circle {
-  background-color: yellow;
-  border-radius: 50%;
-  height: 100px;
-  width: 100px;
-  margin-bottom: 20px;
+  height: 400px;
 }
 
 .EventList {
   display: flex;
+  width: 100%;
   flex-direction: column;
+  margin-top: 20px;
 }
 
 .Event {
-  border-style: groove;
-  background-color: red;
+  display: flex;
+  background-color: white;
   margin: 20px;
+  font-family: 'Roboto', sans-serif;
+  text-decoration: none;
+  color: #70d0cc;
+}
+
+.EventInfo {
+  margin-left: 20px;
+}
+
+.EventImg {
+  width: 12%;
 }
 
 .UserCard {

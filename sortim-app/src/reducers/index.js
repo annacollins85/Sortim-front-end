@@ -2,7 +2,7 @@ import { combineReducers } from 'redux'
 
 const authDefaultState = {
   authObj: null
-}
+};
 
 const authReducer = (state = authDefaultState, action) => {
   switch (action.type) {
@@ -12,39 +12,71 @@ const authReducer = (state = authDefaultState, action) => {
         authObj: action.authObj
       }
     case 'LOG_OUT':
-      return {
-        ...state,
-        authObj: null
-      }
+      return authDefaultState
     default:
       return state;
   }
-}
+};
+
+const objectifyArray = (array, idKey = 'id') => {
+  return array.reduce((accum, item) => {
+    accum[item[idKey]] = item
+
+    return accum;
+  }, {})
+};
 
 const entitiesDefaultState = {
-  events: []
-}
+  events: {},
+  otherUsers: []
+};
 
 const entitiesReducer = (state = entitiesDefaultState, action) => {
   switch (action.type) {
     case 'ADD_EVENTS':
       return {
         ...state,
-        events: action.events
+        events: objectifyArray(action.events)
       }
     case 'LOG_OUT':
+      return entitiesDefaultState
+    case 'ADD_OTHER_USERS':
       return {
         ...state,
-        events: null
+        otherUsers: action.eventId
       }
     default:
       return state;
   }
-}
+};
+
+
+// const pagesDefaultState = {
+//   selectedEvent: null,
+//   selectedUser: null,
+// };
+//
+// const pagesReducer = (state = pagesDefaultState, action) => {
+//   switch (action.type) {
+//     case 'SELECT_EVENT':
+//       return {
+//         ...state,
+//         selectedEvent: action.id
+//       }
+//     case 'SELECT_EVENT':
+//       return {
+//         ...state,
+//         selectedEvent: action.id
+//       }
+//     default:
+//       return state;
+//   }
+// }
 
 const reducer = combineReducers({
   auth: authReducer,
   entities: entitiesReducer,
-})
+  // pages: pagesReducer,
+});
 
 export default reducer;
