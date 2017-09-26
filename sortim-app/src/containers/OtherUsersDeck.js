@@ -5,6 +5,7 @@ import { Direction } from 'swing';
 import { connect } from 'react-redux';
 import { addOtherUsers } from '../actions';
 import { getOtherUsers } from '../Service';
+import { sendInvite } from '../Service';
 
 class OtherUsersDeck extends Component {
 
@@ -18,11 +19,15 @@ class OtherUsersDeck extends Component {
     getOtherUsers(eventId)
     .then(data => data.json())
     .then(data => {
-      console.log('data', data);
-      console.log(this.props.authObj.id);
-      return data.filter(el => el.id !== this.props.authObj.id)
+      return data.filter(el => el.email !== this.props.authObj.email)
     })
     .then(data => this.props.addOtherUsers(data))
+  }
+
+  cardThrown = (e) => {
+    if(e.throwDirection === Direction.RIGHT){
+      console.log('SWIPED RIGHT!!!');
+    }
   }
 
   render() {
@@ -33,11 +38,11 @@ class OtherUsersDeck extends Component {
           tagName="div"
           setStack={(stack)=> this.setState({stack:stack})}
           ref="stack"
-          throwout={(e) => console.log('throwout', e)}
+          throwout={this.cardThrown}
         >
           {data.map(item =>
-            <div key={item.id} className="card">
-              <img src={item.img} alt="profile-pic"/>
+            <div key={item.id} className="Card">
+              <img draggable={false} src={item.img} className="CardImage" alt="profile-pic"/>
               <h2>{item.name}</h2>
             </div>
           )}

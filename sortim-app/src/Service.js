@@ -31,19 +31,10 @@ export function getOtherUsers (data) {
   return fetch(config);
 }
 
-export function checkForInvite (data) {
-  const config = new Request (`http://localhost:3001/events/${data.eventId}/${data.userId}`, {
-    method: 'GET',
-    headers: new Headers({
-      'Content-Type': 'application/json'
-    })
-  })
-  return fetch(config);
-}
-
 export function sendInvite (data) {
-  const config = new Request (`http://localhost:3001/events/${data.eventId}/${data.userId}`, {
+  const config = new Request (`http://localhost:3001/events/${data.eventId}`, {
     method: 'POST',
+    body: JSON.stringify(data.ids),
     headers: new Headers({
       'Content-Type': 'application/json'
     })
