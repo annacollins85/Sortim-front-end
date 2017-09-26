@@ -37,6 +37,10 @@
   max-height: 100%;
 }
 
+.ProfPic {
+  height: 50px;
+}
+
 .UserNav {
   display: flex;
   align-items: center;
@@ -60,12 +64,15 @@
   margin-top: 20px;
 }
 
+.EventList a {
+  text-decoration: none;
+}
+
 .Event {
   display: flex;
   background-color: white;
   margin: 20px;
   font-family: 'Roboto', sans-serif;
-  text-decoration: none;
   color: #70d0cc;
 }
 
@@ -74,43 +81,14 @@
 }
 
 .EventImg {
-  width: 12%;
+  height: 110px;
+  width: 110px;
 }
 
-.UserCard {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 30px;
-}
-
-.Img {
+.card {
+  position: absolute;
+  background: white;
+  border-radius: 15px;
   height: 400px;
-  width: 400px;
-  background-color: skyblue;
-}
-
-.UserInfo {
-  margin: 30px;
-}
-
-.Connect {
-  display: flex;
-  justify-content: space-around;
-}
-
-.No, .Yes {
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-  margin-left: 100px;
-  margin-right: 100px;
-}
-
-.No {
-  background-color: red;
-}
-
-.Yes {
-  background-color: Green;
+  width: 300px;
 }

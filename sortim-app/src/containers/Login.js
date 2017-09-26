@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addAuth } from '../actions';
+import { login } from '../Service';
 
 import FacebookLogin from 'react-facebook-login';
 
@@ -12,8 +13,9 @@ class Login extends Component {
   // }
 
   responseFacebook = (response) => {
-    console.log(response);
+    console.log('response', response);
     this.props.onFbLogin(response);
+    login(response);
   }
 
   render() {
@@ -24,8 +26,8 @@ class Login extends Component {
         <FacebookLogin
           appId="1551739381550538"
           autoLoad={false}
-          fields="name,email,picture"
-          scope="public_profile,user_events"
+          fields="name,email,picture.type(large)"
+          scope="public_profile,email,user_events"
           callback={this.responseFacebook}
         />
       </div>

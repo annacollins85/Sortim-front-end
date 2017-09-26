@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import Cards, { Card } from 'react-swipe-card';
+import Swing from 'react-swing';
+import { Direction } from 'swing';
 
 import { connect } from 'react-redux';
 import { addOtherUsers } from '../actions';
+import { getOtherUsers } from '../Service';
 
 class OtherUsersDeck extends Component {
 
@@ -12,24 +14,34 @@ class OtherUsersDeck extends Component {
   }
 
   fetchOtherUsers() {
-    console.log('this.props', this.props);
-    fetch(`https://graph.facebook.com/v2.10/${this.props.computedMatch.params.eventId}/interested?access_token=${this.props.authObj.accessToken}`)
-    .then(otherUsers => otherUsers.json())
-    .then(otherUsers => otherUsers.data)
-    .then(otherUsers => this.props.addOtherUsers(otherUsers))
+    const eventId = this.props.computedMatch.params.eventId;
+    getOtherUsers(eventId)
+    .then(data => data.json())
+    .then(data => {
+      console.log('data', data);
+      console.log(this.props.authObj.id);
+      return data.filter(el => el.id !== this.props.authObj.id)
+    })
+    .then(data => this.props.addOtherUsers(data))
   }
 
   render() {
     const data = this.props.otherUsers;
-    console.log(data);
     return (
-        <Cards className='master-root'>
+        <Swing
+          className="stack"
+          tagName="div"
+          setStack={(stack)=> this.setState({stack:stack})}
+          ref="stack"
+          throwout={(e) => console.log('throwout', e)}
+        >
           {data.map(item =>
-            <Card key={item.id}>
+            <div key={item.id} className="card">
+              <img src={item.img} alt="profile-pic"/>
               <h2>{item.name}</h2>
-            </Card>
+            </div>
           )}
-        </Cards>
+        </Swing>
     )
   }
 }

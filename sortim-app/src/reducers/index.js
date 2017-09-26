@@ -43,7 +43,7 @@ const entitiesReducer = (state = entitiesDefaultState, action) => {
     case 'ADD_OTHER_USERS':
       return {
         ...state,
-        otherUsers: action.eventId
+        otherUsers: action.otherUsers
       }
     default:
       return state;

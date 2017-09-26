@@ -12,7 +12,7 @@ class NavBar extends Component {
       return (
         <div className="UserNav">
           <FlatButton onClick={this.logOut} label="Log Out" primary={true} />
-          <img src={this.props.authObj.picture.data.url} />
+          <img className="ProfPic" src={this.props.authObj.picture.data.url} alt="profile-picure"/>
         </div>
       )
     }
@@ -26,7 +26,7 @@ class NavBar extends Component {
     return (
       <div className="NavBar">
         <div className="LogoDiv">
-          <img className="Logo" src={Logo}/>
+          <img className="Logo" src={Logo} alt="app-logo"/>
         </div>
         {this.renderUserNav()}
       </div>

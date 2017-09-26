@@ -12,7 +12,7 @@ export const addEvents = (events) => ({
   events
 })
 
-export const addOtherUsers = (eventId) => ({
+export const addOtherUsers = (otherUsers) => ({
   type: 'ADD_OTHER_USERS',
-  eventId
+  otherUsers
 })

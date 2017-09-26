@@ -8,7 +8,7 @@ class Event extends Component {
     return (
       <Link to={`/events/${this.props.event.id}`}>
         <div className="Event">
-          <img className="EventImg" src={this.props.event.picture.data.url}/>
+          <img className="EventImg" src={this.props.event.picture.data.url} alt="event"/>
           <div className="EventInfo">
             <h2>{this.props.event.name}</h2>
             <h3>{this.props.event.start_time}</h3>
