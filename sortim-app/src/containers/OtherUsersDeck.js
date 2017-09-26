@@ -14,6 +14,7 @@ class OtherUsersDeck extends Component {
     this.fetchOtherUsers();
   }
 
+
   fetchOtherUsers() {
     const eventId = this.props.computedMatch.params.eventId;
     getOtherUsers(eventId)
@@ -24,9 +25,20 @@ class OtherUsersDeck extends Component {
     .then(data => this.props.addOtherUsers(data))
   }
 
-  cardThrown = (e) => {
+  cardThrown = async (e) => {
     if(e.throwDirection === Direction.RIGHT){
-      console.log('SWIPED RIGHT!!!');
+      const eventId = this.props.computedMatch.params.eventId;
+      const data = {
+        eventId: eventId,
+        ids: {
+          currentUser: this.props.authObj.id,
+          otherUser: e.target.id,
+        }
+      }
+      const invite = await sendInvite(data);
+      if (invite === 'send email') {
+        console.log('send email');
+      }
     }
   }
 
@@ -41,7 +53,7 @@ class OtherUsersDeck extends Component {
           throwout={this.cardThrown}
         >
           {data.map(item =>
-            <div key={item.id} className="Card">
+            <div id={item.id} key={item.id} className="Card">
               <img draggable={false} src={item.img} className="CardImage" alt="profile-pic"/>
               <h2>{item.name}</h2>
             </div>
@@ -50,18 +62,6 @@ class OtherUsersDeck extends Component {
     )
   }
 }
-
-// <div className="OtherUsersDeck">
-//   <div className="Img"></div>
-//   <div className="UserInfo">
-//     <div className="UserName">Name: Anna</div>
-//     <div className="CommonEvents">Events in Common: La Mercé</div>
-//   </div>
-//   <div className="Connect">
-//     <div className="No"></div>
-//     <div className="Yes"></div>
-//   </div>
-// </div>
 
 const mapStateToProps = (state) => ({
   otherUsers: state.entities.otherUsers
