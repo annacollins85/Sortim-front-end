@@ -34,7 +34,7 @@ export function getOtherUsers (data) {
 export function sendInvite (data) {
   const config = new Request (`http://localhost:3001/events/${data.eventId}`, {
     method: 'POST',
-    body: JSON.stringify(data.ids),
+    body: JSON.stringify(data.emails),
     headers: new Headers({
       'Content-Type': 'application/json'
     })

@@ -12,6 +12,7 @@ class OtherUsersDeck extends Component {
   constructor(props) {
     super(props);
     this.fetchOtherUsers();
+    this.rendered = 0;
   }
 
 
@@ -30,30 +31,33 @@ class OtherUsersDeck extends Component {
       const eventId = this.props.computedMatch.params.eventId;
       const data = {
         eventId: eventId,
-        ids: {
-          currentUser: this.props.authObj.id,
-          otherUser: e.target.id,
+        emails: {
+          currentUser: this.props.authObj,
+          otherUser: {email:e.target.id, name:e.target.key}
         }
       }
       const invite = await sendInvite(data);
-      if (invite === 'send email') {
-        console.log('send email');
+      console.log(invite);
+      if (invite === 'email sent') {
+        console.log('an email has been sent to the other user');
       }
     }
   }
 
   render() {
+    this.rendered++
     const data = this.props.otherUsers;
+    console.log(data);
     return (
         <Swing
           className="stack"
           tagName="div"
           setStack={(stack)=> this.setState({stack:stack})}
           ref="stack"
-          throwout={this.cardThrown}
+          throwout={this.rendered === 1 ? this.cardThrown : null}
         >
           {data.map(item =>
-            <div id={item.id} key={item.id} className="Card">
+            <div id={item.email} key={item.name} className="Card">
               <img draggable={false} src={item.img} className="CardImage" alt="profile-pic"/>
               <h2>{item.name}</h2>
             </div>
@@ -64,7 +68,8 @@ class OtherUsersDeck extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  otherUsers: state.entities.otherUsers
+  authObj: state.auth.authObj,
+  otherUsers: state.entities.otherUsers,
 })
 
 const mapDispatchToProps = (dispatch) => ({

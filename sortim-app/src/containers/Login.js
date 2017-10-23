@@ -21,8 +21,10 @@ class Login extends Component {
   render() {
     return (
       <div className="Login">
-      <h2 className="Welcome">Welcome to Sortim!</h2>
-      <h3 className="Welcome">Login to connect with people at Facebook events...</h3>
+      <div className="LoginText">
+        <h2 className="Welcome">Welcome to <span>Sortim</span>!</h2>
+        <h3 className="Welcome">Login to connect with people at Facebook events...</h3>
+      </div>
         <FacebookLogin
           appId="1551739381550538"
           autoLoad={false}

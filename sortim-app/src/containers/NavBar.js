@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import Logo from '../logo.png';
 import { connect } from 'react-redux';
 import FlatButton from 'material-ui/FlatButton';
 import { logOut } from '../actions';
@@ -26,7 +25,7 @@ class NavBar extends Component {
     return (
       <div className="NavBar">
         <div className="LogoDiv">
-          <img className="Logo" src={Logo} alt="app-logo"/>
+          <h3>Sortim</h3>
         </div>
         {this.renderUserNav()}
       </div>
