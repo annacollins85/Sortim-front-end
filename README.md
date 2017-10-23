@@ -1,8 +1,6 @@
 # Sortim front-end
 
-## Synopsis
-
-Web app using the Facebook Api to connect users who are interested in the same Facebook events as them.
+Web app to connect users who are interested in the same Facebook events as them.
 
 ## App Screenshots
 
@@ -23,6 +21,7 @@ This app has been created using
 
 - [React.js](https://reactjs.org/)
 - [Redux](http://redux.js.org/)
+- [Facebook Api](https://developers.facebook.com/docs/javascript)
 
 ## Contributors
 
