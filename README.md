@@ -6,6 +6,8 @@ Web app using the Facebook Api to connect users who are interested in the same F
 
 ## App Screenshots
 
+![](images/list-of-events.png)
+
 ## Installation
 
 - Fork and clone the repository
