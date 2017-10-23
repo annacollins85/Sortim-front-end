@@ -13,14 +13,14 @@ Web app using the Facebook Api to connect users who are interested in the same F
 - Create a new Facebook app [developers.facebook.com](https://developers.facebook.com/)
 - Create a dotenv file with APP_ID set to your new Facebook app ID
 - Run npm start from the sortim-app folder inside the repository
-- Fork and clone Sortim-back-end repository and follow installation instructions
+- Fork and clone Sortim-back-end repository [here](https://github.com/annacollins85/Sortim-back-end) and follow installation instructions
 
 ## Tech Stack
 
 This app has been created using
 
-- React: [reactjs.org](https://reactjs.org/)
-- Redux: [redux.js.org](http://redux.js.org/)
+- [React.js](https://reactjs.org/)
+- [Redux](http://redux.js.org/)
 
 ## Contributors
 
