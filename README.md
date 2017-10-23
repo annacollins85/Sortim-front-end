@@ -10,7 +10,7 @@ Web app using the Facebook Api to connect users who are interested in the same F
 
 - Fork and clone the repository
 - Run npm install
-- Create a new Facebook app [developers.facebook.com](https://developers.facebook.com/)
+- Create a new Facebook app [here](https://developers.facebook.com/)
 - Create a dotenv file with APP_ID set to your new Facebook app ID
 - Run npm start from the sortim-app folder inside the repository
 - Fork and clone Sortim-back-end repository [here](https://github.com/annacollins85/Sortim-back-end) and follow installation instructions
