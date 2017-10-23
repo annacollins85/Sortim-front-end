@@ -9,10 +9,10 @@ Web app using the Facebook Api to connect users who are interested in the same F
 ## Installation
 
 - Fork and clone the repository
-- Run npm install
+- Run `npm install`
 - Create a new Facebook app [here](https://developers.facebook.com/)
 - Create a dotenv file with APP_ID set to your new Facebook app ID
-- Run npm start from the sortim-app folder inside the repository
+- Run `npm start` from the sortim-app folder inside the repository
 - Fork and clone Sortim-back-end repository [here](https://github.com/annacollins85/Sortim-back-end) and follow installation instructions
 
 ## Tech Stack
@@ -26,8 +26,7 @@ This app has been created using
 
 We love pull requests from everyone. By participating in this project, you agree to abide by the thoughtbot code of conduct: [thoughtbot.com/open-source-code-of-conduct](https://thoughtbot.com/open-source-code-of-conduct)
 
-Fork, then clone the repo:
-Push to your fork and  [submit a pull request].
+Fork, then clone the repository. Push to your fork and submit a pull request.
 
 
 ## License
