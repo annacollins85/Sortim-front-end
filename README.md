@@ -2,8 +2,6 @@
 
 Web app to connect users who are interested in the same Facebook events as them.
 
-![](images/list-of-events.png)
-
 ## Installation
 
 - Fork and clone the repository
