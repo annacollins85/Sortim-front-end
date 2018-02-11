@@ -26,6 +26,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "app-overview": "0.0.9",
     "babel-cli": "^6.26.0"
   }
 }

@@ -37,7 +37,6 @@ class OtherUsersDeck extends Component {
         }
       }
       const invite = await sendInvite(data);
-      console.log(invite);
       if (invite === 'email sent') {
         console.log('an email has been sent to the other user');
       }
@@ -47,8 +46,8 @@ class OtherUsersDeck extends Component {
   render() {
     this.rendered++
     const data = this.props.otherUsers;
-    console.log(data);
-    return (
+    if (!data) return null
+    else return (
         <Swing
           className="stack"
           tagName="div"
