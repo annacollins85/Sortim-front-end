@@ -2,6 +2,12 @@
 
 Web app to connect users who are interested in the same Facebook events as them.
 
+![login](images/login.png "Login")
+
+![events](images/events.png "Events")
+
+![cards](images/cards.png "Cards")
+
 ## Installation
 
 - Fork and clone the repository
